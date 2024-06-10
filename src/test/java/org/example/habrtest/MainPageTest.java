@@ -33,28 +33,23 @@ public class MainPageTest {
     }
 
     @Test
-    // Тест, проверяющий наличие текста на странице после перехода на неё через тег из статьи
+    // Тест, ищущий текст на странице, после перехода на неё по тегу
 
     public void nextPageFromTag() {
-
         WebElement tagLink = driver.findElement(By.cssSelector("span.tm-publication-hub__link-container"));
         tagLink.click();
 
         WebElement nextPageText = driver.findElement(By.xpath("//*[contains(text(), 'Офисы IT-компаний')]"));
-
-       // assertTrue(driver.findElement(By.cssSelector('#app > div > div.tm-layout > main > div > div > div > div.tm-page__main.tm-page__main_has-sidebar > div > div.tm-page__top > div.tm-hub-card.tm-hub-card.tm-hub-card_va
     }
 
     @Test
-    // Тест ддя перехода в поиск из статьи и поиска материалов по заданному слову
-    public void searchFromPage() {
+    // Тест для перехода на личную страницу автора и поиск его публикаций
+    public void findAuthorPublications () {
+        WebElement findAuthor = driver.findElement(By.xpath("//*[contains(text(), 'IgnatChuker')]"));
+        findAuthor.click();
 
-        WebElement searchButton = driver.findElement(By.cssSelector("svg.tm-svg-img tm-header-user-menu__icon tm-header-user-menu__icon_search"));
-        searchButton.click();
-
-        WebElement searchBar = driver.findElement(By.cssSelector("div.tm-input-text-decorated tm-input-text-decorated_has-label-after tm-search__input"));
-        searchBar.sendKeys("Тестирование");
-
+        WebElement findPublications = driver.findElement(By.xpath("//*[contains(text(), 'Публикации')]"));
+        findPublications.click();
     }
     //
 }
